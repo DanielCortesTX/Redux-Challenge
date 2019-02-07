@@ -7,13 +7,10 @@ const PostSchema = new Schema({
     type: Date,
     default: Date.now
   }, 
-  parentId: {
-    type: String
-  },
   title: {
     type: String
   }, 
-  body: {
+  text: {
     type: String,
     required: true
   }, 
