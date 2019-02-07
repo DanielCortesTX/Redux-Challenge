@@ -18,9 +18,6 @@ const CommentSchema = new Schema({
     type: String,
     required: true
   }, 
-  category: {
-    type: String
-  }, 
   voteScore: {
     type: Number
   }, 
@@ -32,4 +29,4 @@ const CommentSchema = new Schema({
   }
 })
 
-module.exports = Comment = mongoose.model('comment', PostSchema)
+module.exports = Comment = mongoose.model('comment', CommentSchema)
