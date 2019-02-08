@@ -3,12 +3,14 @@ const Schema = mongoose.Schema
 
 // Create Post Schema
 const CategorySchema = new Schema({ 
-  category: [
-    {
-      name: String,
-      path: String
-    }
-  ]
+  name: {
+    type: String,
+    required: true
+  },
+  path:  {
+    type: String,
+    required: true
+  }
 })
 
-module.exports = Category = mongoose.model('post', CategorySchema)
+module.exports = Category = mongoose.model('category', CategorySchema)

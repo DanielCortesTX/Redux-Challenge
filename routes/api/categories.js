@@ -12,14 +12,16 @@ const Category = require('../../models/Categories')
 router.get('/categories', (req, res) => {
   Category.find()
     .then(categories => res.json(categories))
-    .catch(err => res.status(404).json({ categories: 'No categories found'}))
+    .catch(err => res.status(404).json({ categories: 'No categories found!'}))
 })
 
 // @route  GET api/:category/posts
 // @desc   Gets all posts in category
 // @access Public
 router.get('/:category/posts', (req, res) => {
-  Post.find({ category: req.param.category })
+  Post.find({ category: req.params.category })
     .then(posts => res.json(posts))
     .catch(err => res.status(404).json({ categories: 'No posts found'}))
 })
+
+module.exports = router

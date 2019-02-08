@@ -4,12 +4,12 @@ const bodyParser = require('body-parser')
 
 const posts = require('./routes/api/posts')
 const categories = require('./routes/api/categories')
-const comments = 'commentsroutes'
+// const comments = 'commentsroutes'
 
 const app = express()
 
 // Body parser middleware
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // DB Config
@@ -17,7 +17,7 @@ const db = require('./config/keys').mongoURI
 
 // Connect to MongoDB
 mongoose
-  .connect(db)
+  .connect(db, { useNewUrlParser: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err))
 

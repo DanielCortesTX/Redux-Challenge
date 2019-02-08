@@ -17,8 +17,8 @@ router.get('/posts', (req, res) => {
 // @route  GET api/:category/posts
 // @desc   Gets all posts in category
 // @access Public
-router.post('/posts', (req, res) => {
-  title, text, author, category, deleted
+router.post('/', (req, res) => {
+  // title, text, author, category, deleted
   const newPost = new Post({
     title: req.body.title,
     text: req.body.text,
