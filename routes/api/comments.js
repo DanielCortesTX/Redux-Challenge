@@ -10,7 +10,6 @@ const Post = require('../../models/Post')
 // @desc   Make new comment
 // @access Public
 router.post('/', (req, res) => {
-  // title, text, author, category, deleted
   const newComment = new Comment({
     parentId: req.body.parentId,
     text: req.body.text,
@@ -21,6 +20,15 @@ router.post('/', (req, res) => {
   })
 
   newComment.save().then(comment => res.json(comment))
+})
+
+// @route  GET api/comments/:id
+// @desc   Get the details for a comment.
+// @access Public
+router.get('/:id', (req, res) => {
+  Comment.findById(req.params.id)
+    .then(comment => res.json(comment))
+    .catch(err => res.status(404).json({ comments: 'No post found'}))
 })
 
 module.exports = router
