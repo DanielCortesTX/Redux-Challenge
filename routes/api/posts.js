@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
 // @desc   Make new post
 // @access Public
 router.post('/', (req, res) => {
-  // title, text, author, category, deleted
   const newPost = new Post({
     title: req.body.title,
     text: req.body.text,
@@ -30,10 +29,6 @@ router.post('/', (req, res) => {
 
   newPost.save().then(post => res.json(post))
 })
-
-/////////////////////////////////////////////
-//////////////////////////////////////////////
-///////////////////////////////////////////
 
 // @route  GET api/posts/:id
 // @desc   Gets specific post
@@ -50,13 +45,16 @@ router.get('/:id', (req, res) => {
 router.post('/:id', (req, res) => {
   Post.findById(req.params.id)
     .then(post => {
-      post.voteScore += 1
+      if(req.body.vote === 'down'){
+        post.voteScore -= 1
 
-      post.save().then(post => res.json(post))
+        post.save().then(post => res.json(post))
+      } else {
+        post.voteScore += 1
+
+        post.save().then(post => res.json(post))
+      }
     })
-    .then(console.log(req.body.id))
-    .then(post => res.json(post))
-    // .then()
     .catch(err => res.status(404).json({ categories: 'No post found'}))
 })
 
@@ -71,7 +69,6 @@ router.put('/:id', (req, res) => {
 
       post.save().then(post => res.json(post))
     })
-    .then(post => res.json(post))
     .catch(err => res.status(404).json({ categories: 'No post found'}))
 })
 
@@ -81,9 +78,30 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   Post.findById(req.params.id)
     .then(post => {
-      post.remove().then(() => res.json({ success: true}))
+      post.deleted = true
+
+      post.save().then(post => res.json(post))
     })
-    .then(post => res.json(post))
+  Comment.find({ parentId: req.params.id})
+    .then(posts => {
+      posts.map((post) => {
+        post.parentDeleted = true
+      })
+  })  
+  .catch(err => res.status(404).json({ categories: 'No post found'}))
+})
+
+
+/////////////////////////////////////////////
+//////////////////////////////////////////////
+///////////////////////////////////////////
+
+// @route  GET api/posts/:id/comments
+// @desc   Gets specific post
+// @access Public
+router.get('/:id/comments', (req, res) => {
+  Comment.find({ parentId: req.params.id})
+    .then(posts => res.json(posts))
     .catch(err => res.status(404).json({ categories: 'No post found'}))
 })
 

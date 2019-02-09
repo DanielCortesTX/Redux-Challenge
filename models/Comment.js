@@ -8,9 +8,10 @@ const CommentSchema = new Schema({
     default: Date.now
   }, 
   parentId: {
-    type: String
+    type: String,
+    required: true
   }, 
-  body: {
+  text: {
     type: String,
     required: true
   }, 
