@@ -54,7 +54,9 @@ router.post('/:id', (req, res) => {
 
       post.save().then(post => res.json(post))
     })
+    .then(console.log(req.body.id))
     .then(post => res.json(post))
+    // .then()
     .catch(err => res.status(404).json({ categories: 'No post found'}))
 })
 
