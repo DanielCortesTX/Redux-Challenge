@@ -73,31 +73,28 @@ router.put('/:id', (req, res) => {
 })
 
 // @route  DELETE api/posts/:id
-// @desc   Delete post 
+// @desc   Delete post and flag comments as parent deleted
 // @access Public
 router.delete('/:id', (req, res) => {
-  Post.findById(req.params.id)
-    .then(post => {
-      post.deleted = true
+  Post.findById(req.params.id).then(post => {
+    post.deleted = true
+    
+    post.save().then(post => res.json(post))
+  }).then(post => {
+    Comment.find({ parentId: req.params.id})
+      .then(comments => {
+        comments.map((comment) => {
+          comment.parentDeleted = true
 
-      post.save().then(post => res.json(post))
-    })
-  Comment.find({ parentId: req.params.id})
-    .then(posts => {
-      posts.map((post) => {
-        post.parentDeleted = true
+          return comment.save()
       })
-  })  
+  })   
+  })
   .catch(err => res.status(404).json({ categories: 'No post found'}))
 })
 
-
-/////////////////////////////////////////////
-//////////////////////////////////////////////
-///////////////////////////////////////////
-
 // @route  GET api/posts/:id/comments
-// @desc   Gets specific post
+// @desc   Gets all comments associated with specific post
 // @access Public
 router.get('/:id/comments', (req, res) => {
   Comment.find({ parentId: req.params.id})
