@@ -22,13 +22,41 @@ router.post('/', (req, res) => {
   newComment.save().then(comment => res.json(comment))
 })
 
+// @route  GET api/comments
+// @desc   Get all comments.
+// @access Public
+router.get('/', (req, res) => {
+  Comment.find()
+    .then(comments => res.json(comments))
+    .catch(err => res.status(404).json({ comments: 'No comments found'}))
+})
+
 // @route  GET api/comments/:id
 // @desc   Get the details for a comment.
 // @access Public
 router.get('/:id', (req, res) => {
   Comment.findById(req.params.id)
     .then(comment => res.json(comment))
-    .catch(err => res.status(404).json({ comments: 'No post found'}))
+    .catch(err => res.status(404).json({ comments: 'No comments found'}))
+})
+
+// @route  POST api/comments/:id
+// @desc   Get the details for a comment.
+// @access Public
+router.post('/:id', (req, res) => {
+  Comment.findById(req.params.id)
+    .then(comment => {
+      if(req.body.vote === 'up'){
+        comment.voteScore += 1
+
+        comment.save().then(comment => res.json(comment))
+      } else {
+        comment.voteScore -= 1
+
+        comment.save().then(comment => res.json(comment))
+      }   
+    })
+    .catch(err => res.status(404).json({ comments: 'Comment not found'}))
 })
 
 module.exports = router
