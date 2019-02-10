@@ -59,4 +59,31 @@ router.post('/:id', (req, res) => {
     .catch(err => res.status(404).json({ comments: 'Comment not found'}))
 })
 
+// @route  PUT api/comments/:id
+// @desc   Modify an existing comment.
+// @access Public
+router.put('/:id', (req, res) => {
+  Comment.findById(req.params.id)
+    .then(comment => {
+        comment.date = Date.now()
+        comment.text = req.body.text
+
+        comment.save().then(comment => res.json(comment))
+    })
+    .catch(err => res.status(404).json({ comments: 'Comment not found'}))
+})
+
+// @route  DELETE api/comments/:id
+// @desc   Set deleted flag to true.
+// @access Public
+router.delete('/:id', (req, res) => {
+  Comment.findById(req.params.id)
+    .then(comment => {
+        comment.deleted = true
+
+        comment.save().then(comment => res.json(comment))
+    })
+    .catch(err => res.status(404).json({ comments: 'Comment not found'}))
+})
+
 module.exports = router
