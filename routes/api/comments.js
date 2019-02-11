@@ -6,10 +6,20 @@ const mongoose = require('mongoose');
 const Comment = require('../../models/Comment')
 const Post = require('../../models/Post')
 
+// Load Validator
+const validateCommentInput = require('../../validation/comment')
+
 // @route  POST api/comments
 // @desc   Make new comment
 // @access Public
 router.post('/', (req, res) => {
+  const { errors, isValid } = validateCommentInput(req.body)
+
+  // Validate
+  if(!isValid){
+    return res.status(400).json(errors)
+  }
+  
   const newComment = new Comment({
     parentId: req.body.parentId,
     text: req.body.text,
