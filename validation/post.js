@@ -9,6 +9,34 @@ module.exports = function validatePostInput(data) {
   data.author = !isEmpty(data.author) ? data.author : ''
   data.category = !isEmpty(data.category) ? data.category : ''
 
+  if(Validator.isEmpty(data.title)){
+    errors.title = "Title field is required"
+  }
+
+  if(Validator.isLength(data.title, { min: 6, max: 50})){
+    errors.title = "Title must be between 6 and 50 characters"
+  }
+
+  if(Validator.isEmpty(data.text)){
+    errors.text = "Text field is required"
+  }
+
+  if(Validator.isLength(data.text, { min: 6, max: undefined})){
+    errors.text = "Title must be at least 6 characters"
+  }
+
+  if(Validator.isEmpty(data.author)){
+    errors.author = "Author field is required"
+  }
+
+  if(Validator.isLength(data.author, { min: 6, max: 50})){
+    errors.title = "Author name must be between 6 and 50 characters"
+  }
+
+  if(Validator.isEmpty(data.category)){
+    errors.category = "Category selection is required"
+  }
+
   return {
     errors,
     isValid: isEmpty(errors)

@@ -21,6 +21,12 @@ router.get('/', (req, res) => {
 // @desc   Make new post
 // @access Public
 router.post('/', (req, res) => {
+  const { errors, isValid } = validatePostInput(req.body)
+
+  // Validate
+  if(!isValid){
+    return res.status(400).json(errors)
+  }
   const newPost = new Post({
     title: req.body.title,
     text: req.body.text,
