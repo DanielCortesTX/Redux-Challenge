@@ -2,8 +2,11 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-// Post model
+// Load Post model
 const Post = require('../../models/Post')
+
+// Validation
+const validatePostInput = require('../../validation/post')
 
 // @route  GET api/posts
 // @desc   Gets all posts
