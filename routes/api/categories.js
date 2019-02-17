@@ -16,7 +16,7 @@ router.get('/categories', (req, res) => {
 })
 
 // @route  GET api/:category/posts
-// @desc   Gets all posts in category
+// @desc   Gets all posts in category ..
 // @access Public
 router.get('/:category/posts', (req, res) => {
   Post.find({ category: req.params.category })
