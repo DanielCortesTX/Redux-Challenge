@@ -1,3 +1,5 @@
+import { LOADING_CATEGORIES, GET_ALL_CATEGORIES, SET_ACTIVE_CATEGORIES } from '../actions/types'
+
 const initialState = {
   allCategories: [],
   activeCategory: {},
