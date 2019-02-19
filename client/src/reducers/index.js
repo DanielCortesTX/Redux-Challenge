@@ -1,4 +1,4 @@
-import { combineReducers } from 'thunk'
+import { combineReducers } from 'redux'
 import categoriesReducer from './categories'
 import postsReducer from './posts'
 import commentsReducer from './comments'
