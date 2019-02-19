@@ -9,6 +9,7 @@ import Home from './components/Home'
 import Create from './components/Create'
 import Category from './components/Category'
 import Post from './components/Post'
+import PageNotFound from './components/PageNotFound'
 
 class App extends Component {
   render() {
@@ -17,10 +18,13 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
+            <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/create" component={Create}/>
             <Route path="/category" component={Category}/>
             <Route path="/post" component={Post}/>
+            <Route component={PageNotFound}/>
+            </Switch>
           </div>
         </Router>
       </Provider>
