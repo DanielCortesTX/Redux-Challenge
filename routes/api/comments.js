@@ -51,7 +51,7 @@ router.get('/:id', (req, res) => {
 })
 
 // @route  POST api/comments/:id
-// @desc   Get the details for a comment.
+// @desc   Up/down vote a comment.
 // @access Public
 router.post('/:id', (req, res) => {
   Comment.findById(req.params.id)

@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
 })
 
 // @route  POST api/posts/:id
-// @desc   Increment Upvotes 
+// @desc   Increment or decrement Votescore 
 // @access Public
 router.post('/:id', (req, res) => {
   Post.findById(req.params.id)
