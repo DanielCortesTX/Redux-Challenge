@@ -1,6 +1,8 @@
 import { combineReducers } from 'thunk'
 import categoriesReducer from './categories'
+import postsReducer from './posts'
 
 export default combineReducers({
-  categort: categoriesReducer
+  category: categoriesReducer,
+  post: postsReducer
 })
