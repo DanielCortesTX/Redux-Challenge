@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { getAllCategories } from '../actions/categories'
 import { getAllPosts } from '../actions/posts'
+import CategoryLink from './categories/CategoryLink';
 
 class Home extends Component {
   componentDidMount(){
@@ -17,7 +18,7 @@ class Home extends Component {
     if(categories === null || categoriesLoading){
       categoryFeed = <h1 className="display-4">Loading</h1>
     } else {
-      categoryFeed = categories.map((category, index) => <h3 key={index}>{category.name}</h3>)
+      categoryFeed = categories.map((category) => <CategoryLink key={category.id} category={category}/>)
     }
 
     if(posts === null || postsLoading){
@@ -30,11 +31,13 @@ class Home extends Component {
         <h1>Home page</h1>
         <h2>Categories</h2>
         <hr/>
-        {categoryFeed}
+        <div className="d-flex">
+          {categoryFeed}
+        </div>
         <hr/>
         <h2>Posts</h2>
         <hr/>
-        {postFeed}
+        <div>{postFeed}</div>
       </div>
     )
   }
