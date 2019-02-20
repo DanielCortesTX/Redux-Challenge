@@ -9,7 +9,7 @@ class CategoryLink extends Component {
         <div>
           <h4>{category.name}</h4>
         </div>
-        <Link to={'/category'} className="btn btn-lg btn-primary">{category.name} posts</Link>
+        <Link to={`/category/${category.name}`} className="btn btn-lg btn-primary">{category.name} posts</Link>
       </div>
     )
   }

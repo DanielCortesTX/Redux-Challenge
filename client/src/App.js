@@ -21,7 +21,7 @@ class App extends Component {
             <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/create" component={Create}/>
-            <Route path="/category" component={Category}/>
+            <Route path="/category/:category" component={Category}/>
             <Route path="/post" component={Post}/>
             <Route component={PageNotFound}/>
             </Switch>

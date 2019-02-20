@@ -22,7 +22,7 @@ export default function categoriesReducer (state=initialState, action) {
     case SET_ACTIVE_CATEGORY:
       return {
         ...state,
-        activeCategory: action.payload,
+        activeCategory: action.selection,
         loading: false
       }
     default:

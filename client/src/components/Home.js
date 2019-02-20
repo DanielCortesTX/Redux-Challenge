@@ -18,7 +18,7 @@ class Home extends Component {
     if(categories === null || categoriesLoading){
       categoryFeed = <h1 className="display-4">Loading</h1>
     } else {
-      categoryFeed = categories.map((category) => <CategoryLink key={category.id} category={category}/>)
+      categoryFeed = categories.map((category) => <CategoryLink key={category._id} category={category}/>)
     }
 
     if(posts === null || postsLoading){
