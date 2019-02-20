@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-import { LOADING_CATEGORIES, GET_ALL_CATEGORIES, SET_ACTIVE_CATEGORY, GET_ALL_POSTS } from './types'
+import { LOADING_CATEGORIES, GET_ALL_CATEGORIES, SET_ACTIVE_CATEGORY } from './types'
 
-export const getAllCategories = () => {
+export const getAllCategories = () => (dispatch) => {
   dispatch(setPostLoading())
   axios.get('/api/categories/categories')
     .then(res => 
@@ -12,7 +12,7 @@ export const getAllCategories = () => {
       }))
     .catch(err =>
       dispatch({
-        type: GET_ALL_POSTS,
+        type: GET_ALL_CATEGORIES,
         payload: null
       }))
 }
