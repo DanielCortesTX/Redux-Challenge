@@ -14,6 +14,7 @@ class Category extends Component {
 
   render() {
     const { categoryPosts, activeCategory, postsLoading } = this.props
+    let heading = activeCategory.toUpperCase()
     let postFeed
 
     if(categoryPosts === null || postsLoading){
@@ -23,7 +24,7 @@ class Category extends Component {
     }
     return (
       <div>
-        <h1>Category Page</h1>
+        <h2 className="display-4">{heading} POSTS</h2>
         <div className="d-flex">
           {postFeed}
         </div>

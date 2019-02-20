@@ -17,6 +17,21 @@ export const getAllPosts = () => (dispatch) => {
     }))
 }
 
+export const getActivePost = (id) => (dispatch) => {
+  dispatch(setLoadingAction())
+  axios.get(`/api/posts/${id}`)
+    .then(res =>
+      dispatch({
+        type: SET_ACTIVE_POST,
+        payload: res.data
+      }))
+    .catch(err =>
+      dispatch({
+        type: SET_ACTIVE_POST,
+        payload: null
+      }))  
+}
+
 export const getCategoryPosts = (category) => (dispatch) => {
   dispatch(setLoadingAction())
   axios.get(`/api/categories/${category}/posts`)

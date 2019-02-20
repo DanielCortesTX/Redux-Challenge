@@ -1,4 +1,4 @@
-import { GET_ALL_POSTS, GET_ACTIVE_CATEGORY_POSTS } from '../actions/types'
+import { GET_ALL_POSTS, GET_ACTIVE_CATEGORY_POSTS, SET_ACTIVE_POST } from '../actions/types'
 
 const initialState = {
   allPosts: [],
@@ -19,6 +19,12 @@ export default function postsReducer (state = initialState, action) {
       return {
         ...state,
         activeCategoryPosts: action.payload,
+        loading: false
+      }
+    case SET_ACTIVE_POST:
+      return {
+        ...state,
+        activePost: action.payload,
         loading: false
       }
     default:

@@ -2,7 +2,7 @@ import { LOADING_CATEGORIES, GET_ALL_CATEGORIES, SET_ACTIVE_CATEGORY } from '../
 
 const initialState = {
   allCategories: [],
-  activeCategory: {},
+  activeCategory: '',
   loading: false
 }
 
