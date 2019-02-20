@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { getAllCategories } from '../actions/categories'
+import { getAllCategories, setActiveCategory } from '../actions/categories'
 import { getAllPosts } from '../actions/posts'
 
 import CategoryLink from './links/CategoryLink'
@@ -11,6 +11,7 @@ class Home extends Component {
   componentDidMount(){
     this.props.getAllCategories()
     this.props.getAllPosts()
+    this.props.setActiveCategory('')
   }
   render() {
     const { categories, categoriesLoading, postsLoading, posts } = this.props
@@ -56,4 +57,4 @@ const mapStateToProps = ({category, post}) => {
   }
 }
 
-export default connect(mapStateToProps, { getAllCategories, getAllPosts })(Home)
+export default connect(mapStateToProps, { getAllCategories, getAllPosts, setActiveCategory })(Home)
