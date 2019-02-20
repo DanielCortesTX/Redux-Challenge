@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { getAllCategories } from '../actions/categories'
 import { getAllPosts } from '../actions/posts'
 
-import CategoryLink from './categories/CategoryLink'
-import PostLink from './categories/PostLink'
+import CategoryLink from './links/CategoryLink'
+import PostLink from './links/PostLink'
 
 class Home extends Component {
   componentDidMount(){

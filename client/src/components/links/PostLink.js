@@ -9,7 +9,7 @@ class PostLink extends Component {
         <div>
           <h4>{post.title}</h4>
         </div>
-        <Link to={`/category/${post.title}`} className="btn btn-lg btn-primary">{post.title} posts</Link>
+        <Link to={`/post/${post._id}`} className="btn btn-lg btn-primary">{post.title} posts</Link>
       </div>
     )
   }

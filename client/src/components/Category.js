@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { setActiveCategory } from '../actions/categories'
 import { getCategoryPosts } from '../actions/posts'
 
-import PostLink from './categories/PostLink';
+import PostLink from './links/PostLink';
 
 class Category extends Component {
   componentDidMount(){

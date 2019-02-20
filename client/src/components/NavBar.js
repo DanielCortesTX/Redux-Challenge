@@ -7,7 +7,6 @@ export default function navbar() {
       <div className="container">
         <div className="navbar-nav nav-tabs">
           <Link className="nav-link nav-item" to="/">Home</Link>  
-          <Link className="nav-link nav-item" to="/category">Categories</Link>
         </div>
       </div>
     </nav>
