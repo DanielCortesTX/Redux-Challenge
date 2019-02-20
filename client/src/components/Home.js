@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 
 import { getAllCategories } from '../actions/categories'
 import { getAllPosts } from '../actions/posts'
-import CategoryLink from './categories/CategoryLink';
+
+import CategoryLink from './categories/CategoryLink'
+import PostLink from './categories/PostLink'
 
 class Home extends Component {
   componentDidMount(){
@@ -24,7 +26,7 @@ class Home extends Component {
     if(posts === null || postsLoading){
       postFeed = <h1 className="display-4">Loading</h1>
     } else {
-      postFeed = posts.map((post, index) => <h3 key={index}>{post.title}</h3>)
+      postFeed = posts.map((post, index) => <PostLink key={index} post={post}/>)
     }
     return (
       <div className="container">
@@ -37,7 +39,9 @@ class Home extends Component {
         <hr/>
         <h2>Posts</h2>
         <hr/>
-        <div>{postFeed}</div>
+        <div className="d-flex">
+          {postFeed}
+        </div>
       </div>
     )
   }
