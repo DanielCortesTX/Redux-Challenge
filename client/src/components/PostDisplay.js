@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Moment from 'react-moment'
 
 export default class PostDisplay extends Component {
   render() {
@@ -10,6 +11,8 @@ export default class PostDisplay extends Component {
         <div className="card focus-post d-flex">
         <p className="lead">{post.text}</p>
         <p className="lead">By {post.author}</p>
+        <Moment format="MMMM Do YYYY">{post.date}</Moment>
+        <p>{post.voteScore}</p>
         </div>
       </div>
     )
