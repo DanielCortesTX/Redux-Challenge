@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 class CategoryLink extends Component {
   render() {
     const { category } = this.props
+    let name = category.name
+    const upper = name.toUpperCase()
     return (
       <div className="card card-body">
-        <div>
-          <h4>{category.name}</h4>
-        </div>
-        <Link to={`/category/${category.name}`} className="btn btn-lg btn-primary">{category.name} posts</Link>
+        
+        <Link to={`/category/${category.name}`} className="btn btn-lg btn-info">{upper}</Link>
       </div>
     )
   }

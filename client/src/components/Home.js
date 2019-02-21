@@ -8,6 +8,12 @@ import CategoryLink from './links/CategoryLink'
 import PostLink from './links/PostLink'
 
 class Home extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      filter: 'timestamp'
+    }
+  }
   componentDidMount(){
     this.props.getAllCategories()
     this.props.getAllPosts()
@@ -29,6 +35,7 @@ class Home extends Component {
     } else {
       postFeed = posts.map((post, index) => <PostLink key={index} post={post}/>)
     }
+    
     return (
       <div className="container">
         <h1>Home page</h1>
@@ -52,8 +59,8 @@ const mapStateToProps = ({category, post}) => {
   return {
     categories: category.allCategories,
     categoriesLoading: category.loading,
-    posts: post.allPosts,
-    postsLoading: post.loading
+    postsLoading: post.loading,
+    posts: post.allPosts
   }
 }
 

@@ -23,8 +23,8 @@ class Category extends Component {
       postFeed = categoryPosts.map((post, index) => <PostLink key={index} post={post}/>)
     }
     return (
-      <div>
-        <h2 className="display-4">{heading} POSTS</h2>
+      <div className="container">
+        <h2 className="display-4">{heading}</h2>
         <div className="d-flex">
           {postFeed}
         </div>
