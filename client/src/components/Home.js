@@ -35,21 +35,32 @@ class Home extends Component {
     } else {
       postFeed = posts.map((post, index) => <PostLink key={index} post={post}/>)
     }
-    
+
     return (
       <div className="container">
-        <h1>Home page</h1>
-        <h2>Categories</h2>
+        <h1 className="mb-4 center-item display-4">Post-About-It</h1>
+        <div className="card mb-4">
+          <p className="lead p-3">Welcome to Post-About-It! This is a site where anyone can add posts about topics, vote and comment on them. Click a category to see all its posts or click a post below to view its content</p>
+        </div>
+        <h2 className="mb-4 center-item display-4">Categories</h2>
+
         <hr/>
+
         <div className="d-flex">
           {categoryFeed}
         </div>
+
         <hr/>
-        <h2>Posts</h2>
+
+        <h2 className="mb-4 center-item display-4">Posts</h2>
+
         <hr/>
+
         <div className="d-flex">
           {postFeed}
         </div>
+
+        <hr/>
       </div>
     )
   }

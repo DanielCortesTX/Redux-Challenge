@@ -6,9 +6,9 @@ class PostLink extends Component {
     const { post } = this.props
     let upper = post.category.toUpperCase()
     return (
-      <div className="card card-body">
+      <div className="card card-body mx-3">
         <div>
-          <h4>{upper}</h4>
+          <h4 className="center-item lead">{upper}</h4>
         </div>
         <Link to={`/post/${post._id}`} className="btn btn-lg btn-primary">{post.title}</Link>
       </div>
