@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { getActivePost } from '../actions/posts'
+import PostDisplay from './PostDisplay'
 
 class Post extends Component {
   componentDidMount(){
@@ -12,13 +13,12 @@ class Post extends Component {
     let postDisplay
     
     if(post === null || loadingPost){
-      postDisplay = <h1>Loading Post</h1>
+      postDisplay = <h1 className="display-4">Loading Post</h1>
     } else {
-      postDisplay = <div><h1>{post.title}</h1><h1>{post.text}</h1></div>
+      postDisplay = <PostDisplay post={post}/>
     }
     return (
-      <div>
-        <h1>Post Page</h1>
+      <div className="container center-item">
         {postDisplay}
       </div>
     )
