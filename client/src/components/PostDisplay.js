@@ -1,7 +1,24 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Moment from 'react-moment'
 
-export default class PostDisplay extends Component {
+import { changeVoteScore } from '../actions/posts'
+
+class PostDisplay extends Component {
+  // constructor(props){
+  //   super(props)
+
+  //   this.upVote = this.upVote.bind(this)
+  //   this.downVote = this.downVote.bind(this)
+  // }
+  upVote(id){
+    console.log(id)
+    this.props.changeVoteScore(id, {vote:'up'})
+  }
+  downVote(id){
+    console.log(id)
+    this.props.changeVoteScore(id, {vote:'down'})
+  }
   render() {
     const { post } = this.props
     
@@ -17,8 +34,8 @@ export default class PostDisplay extends Component {
             <p className="lead">By {post.author}</p>
           </div>
           <div className="d-flex flex-row align-items-center">
-            <button className="btn btn-light"><i className="fas fa-angle-up text-info"/></button>
-            <button className="btn btn-light"><i className="fas fa-angle-down text-info"/></button>
+            <button className="btn btn-light" onClick={() => this.upVote(post._id)}><i className="fas fa-angle-up text-info"/></button>
+            <button className="btn btn-light" onClick={() => this.downVote(post._id)}><i className="fas fa-angle-down text-info"/></button>
             <span className="lead">This post has a net score of: {post.voteScore}</span>
           </div>
           </div>
@@ -28,3 +45,11 @@ export default class PostDisplay extends Component {
     )
   }
 }
+
+const mapStateToProps = ({ post}) => {
+  return {
+    post: post.activePost
+  }
+}
+
+export default connect(mapStateToProps, { changeVoteScore })(PostDisplay)

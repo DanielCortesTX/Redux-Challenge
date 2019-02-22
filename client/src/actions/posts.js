@@ -32,6 +32,20 @@ export const getActivePost = (id) => (dispatch) => {
       }))  
 }
 
+export const changeVoteScore = (id, vote) => (dispatch) => {
+  axios.post(`/api/posts/${id}`, vote)
+    .then(res =>
+      dispatch({
+        type: SET_ACTIVE_POST,
+        payload: res.data
+      }))
+    .catch(err =>
+      dispatch({
+        type: SET_ACTIVE_POST,
+        payload: null
+      }))
+}
+
 export const getCategoryPosts = (category) => (dispatch) => {
   dispatch(setLoadingAction())
   axios.get(`/api/categories/${category}/posts`)
