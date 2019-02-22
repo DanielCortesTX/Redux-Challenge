@@ -5,12 +5,6 @@ import Moment from 'react-moment'
 import { changeVoteScore } from '../actions/posts'
 
 class PostDisplay extends Component {
-  // constructor(props){
-  //   super(props)
-
-  //   this.upVote = this.upVote.bind(this)
-  //   this.downVote = this.downVote.bind(this)
-  // }
   upVote(id){
     console.log(id)
     this.props.changeVoteScore(id, {vote:'up'})
