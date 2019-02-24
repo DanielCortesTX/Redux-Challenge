@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Moment from 'react-moment'
 
-import { changeVoteScore } from '../actions/posts'
+import { changeVoteScore } from '../../actions/posts'
 
 class PostDisplay extends Component {
   upVote(id){

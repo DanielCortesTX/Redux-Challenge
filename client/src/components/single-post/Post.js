@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { getActivePost, changeVoteScore } from '../actions/posts'
-import { getActivePostComments } from '../actions/comments'
+import { getActivePost, changeVoteScore } from '../../actions/posts'
+import { getActivePostComments } from '../../actions/comments'
 import PostDisplay from './PostDisplay'
 
 class Post extends Component {
