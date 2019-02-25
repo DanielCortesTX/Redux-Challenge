@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { getActivePost, changeVoteScore } from '../../actions/posts'
 import { getActivePostComments } from '../../actions/comments'
+import CommentsFeed from './CommentsFeed'
 import PostDisplay from './PostDisplay'
 
 class Post extends Component {
@@ -27,7 +28,8 @@ class Post extends Component {
     if(comments === null || loadingComments){
       commentsDisplay = <h1 className="display-4">Loading Comments</h1>
     } else {
-      commentsDisplay = comments.map((comment) => <h2>{comment.text}</h2>)
+      commentsDisplay = <CommentsFeed comments={comments}/>
+      // comments.map((comment) => <h2>{comment.text}</h2>
     }
 
 
