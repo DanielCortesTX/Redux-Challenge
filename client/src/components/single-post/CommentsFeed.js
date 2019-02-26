@@ -3,10 +3,10 @@ import CommentDisplay from './CommentDisplay'
 
 class CommentsFeed extends Component {
   render() {
-    const { comments } = this.props
+    const { comments, changeCommentVote } = this.props
     return (
       <div className="focus-post d-flex align-items-center flex-column">
-        {comments.map((comment) => <CommentDisplay comment={comment}/>)}
+        {comments.map((comment) => <CommentDisplay comment={comment} changeCommentVote={changeCommentVote}/>)}
       </div>
     )
   }

@@ -29,7 +29,7 @@ class PostDisplay extends Component {
           </div>
           <div className="d-flex flex-row align-items-center">
             <button className="btn btn-light" onClick={() => this.upVote(post._id)}><i className="fas fa-angle-up text-info"/></button>
-            <button className="btn btn-light" onClick={() => this.downVote(post._id)}><i className="fas fa-angle-down text-info"/></button>
+            <button className="btn btn-light mr-2" onClick={() => this.downVote(post._id)}><i className="fas fa-angle-down text-info"/></button>
             <span className="lead">This post has a net score of: {post.voteScore}</span>
           </div>
           </div>
@@ -40,7 +40,7 @@ class PostDisplay extends Component {
   }
 }
 
-const mapStateToProps = ({ post}) => {
+const mapStateToProps = ({ post }) => {
   return {
     post: post.activePost
   }

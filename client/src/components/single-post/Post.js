@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { getActivePost, changeVoteScore } from '../../actions/posts'
-import { getActivePostComments } from '../../actions/comments'
+import { getActivePostComments, changeCommentVote } from '../../actions/comments'
 import CommentsFeed from './CommentsFeed'
 import PostDisplay from './PostDisplay'
 
@@ -13,6 +13,9 @@ class Post extends Component {
   }
   upVoteScore = (id, vote) => {
     this.props.changeVoteScore(id, vote)
+  }
+  changeCommentVote = (id, vote) => {
+    this.props.changeCommentVote(id, vote)
   }
   render() {
     const { post, loadingPost, comments, loadingComments } = this.props
@@ -28,7 +31,7 @@ class Post extends Component {
     if(comments === null || loadingComments){
       commentsDisplay = <h1 className="display-4">Loading Comments</h1>
     } else {
-      commentsDisplay = <CommentsFeed comments={comments}/>
+      commentsDisplay = <CommentsFeed comments={comments} changeCommentVote={this.changeCommentVote}/>
       // comments.map((comment) => <h2>{comment.text}</h2>
     }
 
@@ -51,4 +54,4 @@ const mapStateToProps = ({ post, comment }) => {
   }
 }
 
-export default connect(mapStateToProps, { getActivePost, changeVoteScore, getActivePostComments })(Post)
+export default connect(mapStateToProps, { getActivePost, changeVoteScore, getActivePostComments, changeCommentVote })(Post)
