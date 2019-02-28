@@ -1,15 +1,36 @@
 import React, { Component } from 'react'
 import CommentDisplay from './CommentDisplay'
+import { changeCommentVote } from '../../actions/comments'
+import { connect } from 'react-redux'
 
 class CommentsFeed extends Component {
+  changeCommentVote = (id, vote) => {
+    const { parentId } = this.props
+    this.props.changeCommentVote(id, vote, parentId)
+  }
   render() {
-    const { comments, changeCommentVote } = this.props
+    const { comments, loading } = this.props
+    let commentFeed
+
+    if(comments === null || loading){
+      commentFeed = <h1>Loading</h1>
+    } else {
+      commentFeed = comments.map((comment) => <CommentDisplay key={comment._id} comment={comment} changeCommentVote={this.props.changeCommentVote}/>)
+    }
+
     return (
-      <div className="focus-post d-flex align-items-center flex-column">
-        {comments.map((comment) => <CommentDisplay comment={comment} changeCommentVote={changeCommentVote}/>)}
+      <div className="center-item">
+        {commentFeed}
       </div>
     )
   }
 }
 
-export default CommentsFeed
+const mapStateToProps = ({ comment }) => {
+  return {
+    comments: comment.activePostComments,
+    loading: comment.loading
+  }
+}
+
+export default connect(mapStateToProps, { changeCommentVote })(CommentsFeed)
