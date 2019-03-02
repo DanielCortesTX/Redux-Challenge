@@ -39,7 +39,7 @@ class Post extends Component {
 
 
     return (
-      <div className="container center-item">
+      <div className="container">
         {postDisplay}
         <CommentsFeed parentId={parentId}/>
       </div>

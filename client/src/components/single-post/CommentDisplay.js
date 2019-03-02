@@ -17,6 +17,8 @@ class CommentDisplay extends Component {
 
     return (
       <div className="card card-body">
+        <h3>{comment.author}:</h3>
+        <h2>{comment.text}</h2>
         <div className="d-flex flex-row align-items-center">
           <button className="btn btn-light" onClick={() => this.upVote(comment._id)}><i className="fas fa-angle-up text-info"/></button>
           <button className="btn btn-light mr-2" onClick={() => this.downVote(comment._id)}><i className="fas fa-angle-down text-info"/></button>

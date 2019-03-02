@@ -17,7 +17,7 @@ class PostDisplay extends Component {
     const { post } = this.props
     
     return (
-      <div>
+      <div className="center-item">
         <div className="d-flex align-items-center flex-column">
           <h1 className="display-4">{post.title}</h1>
           <hr className="focus-post mb-4"/>
