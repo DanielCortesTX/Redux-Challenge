@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-// import { changeCommentVote } from '../../actions/comments'
-
 class CommentDisplay extends Component {
   upVote(id){
     console.log(id)
