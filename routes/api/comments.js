@@ -59,11 +59,18 @@ router.post('/:id', (req, res) => {
       if(req.body.vote === 'up'){
         comment.voteScore += 1
 
-        comment.save().then(comment => res.json(comment))
-      } else {
+        comment.save().then(comment => 
+          Comment.find({ parentId: comment.parentId})
+            .then(posts => res.json(posts))
+            .catch(err => res.status(404).json({ categories: 'No post found'}))
+        )} else {
         comment.voteScore -= 1
 
-        comment.save().then(comment => res.json(comment))
+        comment.save().then(comment => 
+          Comment.find({ parentId: comment.parentId})
+            .then(posts => res.json(posts))
+            .catch(err => res.status(404).json({ categories: 'No post found'}))
+          )
       }   
     })
     .catch(err => res.status(404).json({ comments: 'Comment not found'}))
