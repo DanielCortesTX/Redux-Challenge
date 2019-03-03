@@ -18,8 +18,8 @@ class CommentDisplay extends Component {
         <h3>{comment.author}:</h3>
         <h2>{comment.text}</h2>
         <div className="d-flex flex-row align-items-center">
-          <button className="btn btn-light" onClick={() => this.upVote(comment._id)}><i className="fas fa-angle-up text-info"/></button>
-          <button className="btn btn-light mr-2" onClick={() => this.downVote(comment._id)}><i className="fas fa-angle-down text-info"/></button>
+          <button className="btn btn-light bg-success" onClick={() => this.upVote(comment._id)}><i className="fas fa-angle-up text-white"/></button>
+          <button className="btn btn-light mr-2 bg-danger" onClick={() => this.downVote(comment._id)}><i className="fas fa-angle-down text-white"/></button>
           <span className="lead">Comment score: {comment.voteScore}</span>
         </div>
       </div>
