@@ -12,6 +12,11 @@ export default function commentsReducer (state = initialState, action) {
         ...state,
         activePostComments: action.payload
       }
+    case CLEAR_ACTIVE_POST_COMMENTS:
+      return {
+        ...state,
+        activePostComments: []
+      }  
     case LOADING_COMMENTS:
       return {
         ...state,

@@ -19,7 +19,7 @@ class CommentsFeed extends Component {
     }
 
     return (
-      <div>
+      <div className="container">
         {commentFeed}
       </div>
     )

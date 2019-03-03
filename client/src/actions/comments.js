@@ -17,8 +17,13 @@ export const getActivePostComments = (id) => (dispatch) => {
       }))
 }
 
+export const clearActivePostComments = () => {
+  return {
+    type: CLEAR_ACTIVE_POST_COMMENTS
+  }
+}
+
 export const changeCommentVote = (id, vote, parentId) => (dispatch) => {
-  // dispatch(setCommentsLoading())
   axios.post(`/api/comments/${id}`, vote)
     .then(res =>
     dispatch({
@@ -29,33 +34,7 @@ export const changeCommentVote = (id, vote, parentId) => (dispatch) => {
     dispatch({
       type: GET_ACTIVE_POST_COMMENTS,
       payload: null
-    }))  
-    //   axios.get(`/api/posts/${parentId}/comments`)
-    // .then(res =>
-    //   dispatch({
-    //     type: GET_ACTIVE_POST_COMMENTS,
-    //     payload: res.data
-    //   }))
-    // .catch(err =>
-    //   dispatch({
-    //     type: GET_ACTIVE_POST_COMMENTS,
-    //     payload: null
-    //   }))
-    // )
-      // dispatch(getActivePostComments(parentId)))
-    
-      // axios.get(`/api/posts/${parentId}/comments`)
-      //   .then(res =>
-      //     dispatch({
-      //       type: GET_ACTIVE_POST_COMMENTS,
-      //       payload: res.data
-      //     }))
-      //   .catch(err =>
-      //     dispatch({
-      //       type: GET_ACTIVE_POST_COMMENTS,
-      //       payload: null
-      //     })))
-      
+    }))    
 }
 
 export const setCommentsLoading = () => () => {

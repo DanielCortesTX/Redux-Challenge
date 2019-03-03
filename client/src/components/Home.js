@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { getAllCategories, setActiveCategory } from '../actions/categories'
 import { getAllPosts } from '../actions/posts'
+import { clearActivePostComments } from '../actions/comments'
 
 import CategoryLink from './links/CategoryLink'
 import PostLink from './links/PostLink'
@@ -15,6 +16,7 @@ class Home extends Component {
     }
   }
   componentDidMount(){
+    this.props.clearActivePostComments()
     this.props.getAllCategories()
     this.props.getAllPosts()
     this.props.setActiveCategory('')
@@ -75,4 +77,4 @@ const mapStateToProps = ({category, post}) => {
   }
 }
 
-export default connect(mapStateToProps, { getAllCategories, getAllPosts, setActiveCategory })(Home)
+export default connect(mapStateToProps, { getAllCategories, getAllPosts, setActiveCategory, clearActivePostComments })(Home)
