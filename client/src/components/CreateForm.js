@@ -1,14 +1,33 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
+import { getAllCategories } from '../actions/categories'
+
 class CreateForm extends Component {
-  state = {
-    title: '',
-    text: '',
-    author: '',
-    category: 'none'
+  constructor(){
+    super()
+    this.state = {
+      title: '',
+      text: '',
+      author: '',
+      category: 'none'
+    }
+
+    this.categoryChange = this.categoryChange.bind(this)
+    this.changeInput = this.changeInput.bind(this)
   }
+  componentDidMount(){
+    this.props.getAllCategories()
+  }
+
+  changeInput(e){
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+  
   categoryChange(e) {
+    console.log(e.target.value)
     this.setState({
       category: e.target.value
     })
@@ -20,32 +39,64 @@ class CreateForm extends Component {
     if(categories === null){
       commentForm = <h1>Loading</h1>
     } else {
-      commentForm = <select
-      defaultValue='none'>{
-      categories.map((category, index) => (<option
-        value={category.name} 
-        key={index}
+      commentForm = 
+      <form >
+        <div className="form-group">
+          <input 
+            type="text" 
+            name="title"
+            placeholder="Post Title"
+            value={this.state.title}
+            onChange={this.changeInput}
+            id=""/>
+        </div>
+        <div className="form-group">
+          <input 
+            type="text" 
+            name="text"
+            placeholder="Post Text"
+            value={this.state.text}
+            onChange={this.changeInput}
+            id=""/>
+        </div>
+        <div className="form-group">
+        
+        <select
         defaultValue='none'
-      >{category.name}</option>))}
-      </select>
+        onChange={this.categoryChange}
+        >{
+        categories.map((category, index) => (
+          <option
+            value={this.state.category} 
+            key={index}
+            defaultValue='none'>
+              {category.name}
+          </option>))}
+    </select>
+        
+        </div>
+      </form>
+      
+      
     }
 
     return (
-      <div>
+      <div className="">
         {commentForm}
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ category }) => {
+const mapStateToProps = ({ category, errors }) => {
   let categories = category.allCategories.concat({name: 'none'})
   return {
-    categories: categories
+    categories: categories,
+    errors
   }
 }
 
-export default connect(mapStateToProps)(CreateForm)
+export default connect(mapStateToProps, { getAllCategories })(CreateForm)
 
 // <select 
 //             onChange={this.handleUserLogin} 
