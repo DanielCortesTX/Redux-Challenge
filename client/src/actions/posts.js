@@ -17,7 +17,7 @@ export const getAllPosts = () => (dispatch) => {
     }))
 }
 
-export const getActivePost = (id) => (dispatch) => {
+export const setActivePost = (id) => (dispatch) => {
   dispatch(setLoadingAction())
   axios.get(`/api/posts/${id}`)
     .then(res =>

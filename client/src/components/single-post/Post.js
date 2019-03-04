@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { getActivePost, changeVoteScore } from '../../actions/posts'
+import { setActivePost, changeVoteScore } from '../../actions/posts'
 import { getActivePostComments } from '../../actions/comments'
 import CommentsFeed from './CommentsFeed'
 import PostDisplay from './PostDisplay'
 
 class Post extends Component {
   componentDidMount(){
-    this.props.getActivePost(this.props.match.params.id)
+    this.props.setActivePost(this.props.match.params.id)
     this.props.getActivePostComments(this.props.match.params.id)
   }
   upVoteScore = (id, vote) => {
@@ -42,4 +42,4 @@ const mapStateToProps = ({ post }) => {
   }
 }
 
-export default connect(mapStateToProps, { getActivePost, changeVoteScore, getActivePostComments })(Post)
+export default connect(mapStateToProps, { setActivePost, changeVoteScore, getActivePostComments })(Post)
