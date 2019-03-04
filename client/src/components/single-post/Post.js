@@ -27,7 +27,7 @@ class Post extends Component {
 
 
     return (
-      <div className="container">
+      <div className="">
         {postDisplay}
         <CommentsFeed parentId={parentId}/>
       </div>

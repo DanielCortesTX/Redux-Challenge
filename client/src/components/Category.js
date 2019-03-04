@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { setActiveCategory } from '../actions/categories'
-import { getCategoryPosts } from '../actions/posts'
+import { getCategoryPosts, clearActivePost } from '../actions/posts'
 import { clearActivePostComments } from '../actions/comments'
 
 import PostLink from './links/PostLink';
@@ -10,6 +10,7 @@ import PostLink from './links/PostLink';
 class Category extends Component {
   componentDidMount(){
     this.props.clearActivePostComments()
+    this.props.clearActivePost()
     this.props.setActiveCategory(this.props.match.params.category)
     this.props.getCategoryPosts(this.props.match.params.category)
   }
@@ -26,7 +27,8 @@ class Category extends Component {
     }
     return (
       <div className="container">
-        <h2 className="display-4">{heading}</h2>
+        <h2 className="mb-4 center-item display-4">{heading}</h2>
+        <hr className="focus-post mb-4"/>
         <div className="d-flex">
           {postFeed}
         </div>
@@ -43,4 +45,4 @@ const mapStateToProps = ({ category, post}) => {
   }
 }
 
-export default connect(mapStateToProps, {setActiveCategory, getCategoryPosts, clearActivePostComments })(Category)
+export default connect(mapStateToProps, {setActiveCategory, getCategoryPosts, clearActivePostComments, clearActivePost })(Category)

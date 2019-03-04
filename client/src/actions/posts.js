@@ -32,6 +32,13 @@ export const getActivePost = (id) => (dispatch) => {
       }))  
 }
 
+export const clearActivePost = () => {
+  return {
+    type: SET_ACTIVE_POST,
+    payload: {}
+  }
+}
+
 export const changeVoteScore = (id, vote) => (dispatch) => {
   axios.post(`/api/posts/${id}`, vote)
     .then(res =>
