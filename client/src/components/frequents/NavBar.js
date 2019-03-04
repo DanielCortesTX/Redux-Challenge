@@ -12,6 +12,7 @@ class NavBar extends Component {
         <div className="container">
           <div className="navbar-nav nav-tabs">
             <Link className="nav-link nav-item" to="/">HOME</Link>
+            <Link className="nav-link nav-item" to="/create">CREATE POST</Link>
             {activeCategory  && <Link className="nav-link nav-item" to={`/category/${activeCategory}`}>TO {upper} PAGE</Link>}
           </div>
         </div>
