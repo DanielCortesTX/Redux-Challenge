@@ -8,6 +8,9 @@ class PostLink extends Component {
     let upper = post.category.toUpperCase()
     return (
       <div className="card card-body mx-3 my-3 link-width">
+        <div>
+          <h4 className="center-item lead">{upper}</h4>
+        </div>
         <Link to={`/post/${post._id}`} className={classnames('btn btn-lg', {
           'btn-warning': post.category === 'movies'
         }, {

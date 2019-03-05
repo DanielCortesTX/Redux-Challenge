@@ -13,7 +13,7 @@ class CommentsFeed extends Component {
     let commentFeed
 
     if(comments === null || loading){
-      commentFeed = <h1>Loading</h1>
+      commentFeed = <h1 className="display-4 center-item">Loading</h1>
     } else {
       commentFeed = comments.map((comment) => <CommentDisplay key={comment._id} comment={comment} changeCommentVote={this.props.changeCommentVote}/>)
     }

@@ -21,7 +21,7 @@ class Category extends Component {
     let postFeed
 
     if(categoryPosts === null || postsLoading){
-      postFeed = <h1 className="display-4">Loading Posts...</h1>
+      postFeed = <h1 className="display-4 center-item">Loading Posts...</h1>
     } else {
       postFeed = categoryPosts.map((post, index) => <PostLink key={index} post={post}/>)
     }

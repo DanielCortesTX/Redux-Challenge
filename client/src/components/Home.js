@@ -6,7 +6,7 @@ import { getAllPosts, clearActivePost } from '../actions/posts'
 import { clearActivePostComments } from '../actions/comments'
 
 import CategoryLink from './links/CategoryLink'
-import PostLink from './links/PostLink'
+import HomePostLink from './links/HomePostLink'
 
 class Home extends Component {
   constructor(props){
@@ -28,15 +28,15 @@ class Home extends Component {
     let postFeed
 
     if(categories === null || categoriesLoading){
-      categoryFeed = <h1 className="display-4">Loading</h1>
+      categoryFeed = <h1 className="display-4 center-item">Loading</h1>
     } else {
       categoryFeed = categories.map((category) => <CategoryLink key={category._id} category={category}/>)
     }
 
     if(posts === null || postsLoading){
-      postFeed = <h1 className="display-4">Loading</h1>
+      postFeed = <h1 className="display-4 center-item">Loading</h1>
     } else {
-      postFeed = posts.map((post, index) => <PostLink key={index} post={post}/>)
+      postFeed = posts.map((post, index) => <HomePostLink key={index} post={post}/>)
     }
 
     return (
