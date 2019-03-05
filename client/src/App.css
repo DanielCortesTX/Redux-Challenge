@@ -9,6 +9,10 @@
   width: 80%;
 }
 
+.link-width {
+  width: 400px;
+}
+
 .center-icon {
   display: flex;
   flex-direction: row;

@@ -59,7 +59,7 @@ class Home extends Component {
 
         <hr/>
 
-        <div className="d-flex">
+        <div className="d-flex flex-wrap">
           {postFeed}
         </div>
 
