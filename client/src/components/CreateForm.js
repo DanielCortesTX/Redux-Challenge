@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import classnames from 'classnames'
 
 import { getAllCategories } from '../actions/categories'
@@ -28,7 +29,7 @@ class CreateForm extends Component {
       category: this.state.category
     }
     console.log(newPost)
-    this.props.createPost(newPost)
+    this.props.createPost(newPost, this.props.history)
   }
   componentDidMount(){
     this.props.getAllCategories()
@@ -122,7 +123,7 @@ const mapStateToProps = ({ category, errors }) => {
   }
 }
 
-export default connect(mapStateToProps, { getAllCategories, createPost })(CreateForm)
+export default connect(mapStateToProps, { getAllCategories, createPost })(withRouter(CreateForm))
 
 // <select 
 //             onChange={this.handleUserLogin} 

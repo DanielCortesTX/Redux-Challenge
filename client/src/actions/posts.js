@@ -68,14 +68,15 @@ export const getCategoryPosts = (category) => (dispatch) => {
       }))  
 }
 
-export const createPost = (newPost) => (dispatch) => {
+export const createPost = (newPost, history) => (dispatch) => {
   dispatch(clearErrors())
   axios.post(`/api/posts`, newPost)
-    .then(res =>
-      dispatch({
-        type: GET_ALL_POSTS,
-        payload: res.data
-      }))
+    // .then(res =>
+    //   dispatch({
+    //     type: GET_ALL_POSTS,
+    //     payload: res.data
+    //   }))
+    .then(res => history.push('/'))
     .catch(err => 
       dispatch({
         type: GET_ERRORS,
