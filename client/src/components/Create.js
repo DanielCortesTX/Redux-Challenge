@@ -6,6 +6,7 @@ export default class Create extends Component {
     return (
       <div className="container">
         <h1 className="display-4 center-item">Create page</h1>
+        <hr className="focus-post mb-4"/>
         <CreateForm />
       </div>
     )

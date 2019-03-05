@@ -20,14 +20,14 @@ class Post extends Component {
     const parentId = this.props.match.params.id
     
     if(post === null || loadingPost){
-      postDisplay = <h1 className="display-4">Loading Post</h1>
+      postDisplay = <h1 className="display-4 center-item">Loading Post</h1>
     } else {
       postDisplay = <PostDisplay post={post}/>
     }
 
 
     return (
-      <div className="">
+      <div className="container">
         {postDisplay}
         <CommentsFeed parentId={parentId}/>
       </div>

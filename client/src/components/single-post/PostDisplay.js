@@ -18,15 +18,15 @@ class PostDisplay extends Component {
     
     return (
       <div className="center-item">
-        <div className="d-flex align-items-center flex-column">
+        <div className="">
           <h1 className="display-4">{post.title}</h1>
           <hr className="focus-post mb-4"/>
-          <div className="card focus-post d-flex p-4">
-          <p className="lead">{post.text}</p>
-          <div className="d-flex flex-row">
-            <span className="lead mr-1">Made on <Moment format="MMMM Do YYYY">{post.date}</Moment></span>
-            <p className="lead">By {post.author}</p>
-          </div>
+          <div className="card d-flex p-4 center-item">
+            <p className="lead">{post.text}</p>
+            <div className="d-flex flex-row">
+              <span className="lead mr-1">Made on <Moment format="MMMM Do YYYY">{post.date}</Moment></span>
+              <p className="lead">By {post.author}</p>
+            </div>
           <div className="d-flex flex-row align-items-center">
             <button className="btn btn-light bg-success" onClick={() => this.upVote(post._id)}><i className="fas fa-angle-up text-white"/></button>
             <button className="btn btn-light mr-2 bg-danger" onClick={() => this.downVote(post._id)}><i className="fas fa-angle-down text-white"/></button>
