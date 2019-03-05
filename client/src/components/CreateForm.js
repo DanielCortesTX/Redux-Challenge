@@ -58,37 +58,50 @@ class CreateForm extends Component {
         <div className="form-group">
           <input 
             type="text"
-            className='form-control form-control-lg'
+            className={classnames('form-control form-control-lg', {
+              'is-invalid': errors.title
+              
+            })}
             name="title"
             placeholder="Post Title"
             value={this.state.title}
             onChange={this.changeInput}
             id=""/>
+          {errors.title && (<div className="invalid-feedback">{errors.title}</div>)}
         </div>
         <div className="form-group">
           <input 
             type="text"
-            className='form-control form-control-lg' 
+            className={classnames('form-control form-control-lg', {
+              'is-invalid': errors.text
+            })}
             name="text"
             placeholder="Post Text"
             value={this.state.text}
             onChange={this.changeInput}
-            id=""/>
+          />
+          {errors.text && (<div className="invalid-feedback">{errors.text}</div>)}
         </div>
         <div className="form-group">
           <input 
             type="text"
-            className='form-control form-control-lg' 
+            className={classnames('form-control form-control-lg', {
+              'is-invalid': errors.author
+            })}
             name="author"
             placeholder="Author"
             value={this.state.author}
             onChange={this.changeInput}
-            id=""/>
+            id=""
+          />
+          {errors.author && (<div className="invalid-feedback">{errors.author}</div>)}
         </div>
         <div className="form-group">
         <select
         value={this.state.category}
-        className='form-control form-control-lg'
+        className={classnames('form-control form-control-lg', {
+          'is-invalid': errors.category
+        })}
         onChange={this.categoryChange}
         >{
         categories.map((category, index) => (
@@ -99,9 +112,13 @@ class CreateForm extends Component {
               {category.name}
           </option>))}
     </select>
+    {errors.category && (<div className="invalid-feedback">{errors.category}</div>)}
+    </div>
+    <div className="form-group">
     <input type="submit" className="btn btn-large btn-primary"/>
+    </div>
         
-        </div>
+      
       </form>
       
       
