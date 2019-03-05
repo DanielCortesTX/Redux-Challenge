@@ -29,7 +29,7 @@ class Category extends Component {
       <div className="container">
         <h2 className="mb-4 center-item display-4">{heading}</h2>
         <hr className="focus-post mb-4"/>
-        <div className="d-flex">
+        <div className="d-flex flex-wrap justify-content-around">
           {postFeed}
         </div>
       </div>
