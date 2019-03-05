@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import classnames from 'classnames'
 
 import { getAllCategories } from '../actions/categories'
 
@@ -33,7 +34,7 @@ class CreateForm extends Component {
     })
   }
   render() {
-    const { categories } = this.props
+    const { categories, errors } = this.props
 
     let commentForm
     if(categories === null){
@@ -43,7 +44,8 @@ class CreateForm extends Component {
       <form >
         <div className="form-group">
           <input 
-            type="text" 
+            type="text"
+            className='form-control form-control-lg'
             name="title"
             placeholder="Post Title"
             value={this.state.title}
@@ -52,7 +54,8 @@ class CreateForm extends Component {
         </div>
         <div className="form-group">
           <input 
-            type="text" 
+            type="text"
+            className='form-control form-control-lg' 
             name="text"
             placeholder="Post Text"
             value={this.state.text}
@@ -60,14 +63,24 @@ class CreateForm extends Component {
             id=""/>
         </div>
         <div className="form-group">
-        
+          <input 
+            type="text"
+            className='form-control form-control-lg' 
+            name="author"
+            placeholder="Author"
+            value={this.state.author}
+            onChange={this.changeInput}
+            id=""/>
+        </div>
+        <div className="form-group">
         <select
-        defaultValue='none'
+        value={this.state.category}
+        className='form-control form-control-lg'
         onChange={this.categoryChange}
         >{
         categories.map((category, index) => (
           <option
-            value={this.state.category} 
+            value={category.name} 
             key={index}
             defaultValue='none'>
               {category.name}
