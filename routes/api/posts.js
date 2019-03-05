@@ -37,7 +37,11 @@ router.post('/', (req, res) => {
     deleted: false
   })
 
-  newPost.save().then(post => res.json(post))
+  newPost.save().then(post => 
+    Post.find()
+    .then(posts => res.json(posts))
+    .catch(err => res.status(404).json({ categories: 'No posts found'}))
+    )
 })
 
 // @route  GET api/posts/:id

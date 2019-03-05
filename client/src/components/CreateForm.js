@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames'
 
 import { getAllCategories } from '../actions/categories'
+import { createPost } from '../actions/posts'
 
 class CreateForm extends Component {
   constructor(){
@@ -16,6 +17,18 @@ class CreateForm extends Component {
 
     this.categoryChange = this.categoryChange.bind(this)
     this.changeInput = this.changeInput.bind(this)
+    this.submitPost = this.submitPost.bind(this)
+  }
+  submitPost(e){
+    e.preventDefault()
+    const newPost = {
+      title: this.state.title,
+      text: this.state.text,
+      author: this.state.author,
+      category: this.state.category
+    }
+    console.log(newPost)
+    this.props.createPost(newPost)
   }
   componentDidMount(){
     this.props.getAllCategories()
@@ -28,7 +41,6 @@ class CreateForm extends Component {
   }
   
   categoryChange(e) {
-    console.log(e.target.value)
     this.setState({
       category: e.target.value
     })
@@ -41,7 +53,7 @@ class CreateForm extends Component {
       commentForm = <h1>Loading</h1>
     } else {
       commentForm = 
-      <form >
+      <form onSubmit={this.submitPost}>
         <div className="form-group">
           <input 
             type="text"
@@ -86,6 +98,7 @@ class CreateForm extends Component {
               {category.name}
           </option>))}
     </select>
+    <input type="submit" className="btn btn-large btn-primary"/>
         
         </div>
       </form>
@@ -109,7 +122,7 @@ const mapStateToProps = ({ category, errors }) => {
   }
 }
 
-export default connect(mapStateToProps, { getAllCategories })(CreateForm)
+export default connect(mapStateToProps, { getAllCategories, createPost })(CreateForm)
 
 // <select 
 //             onChange={this.handleUserLogin} 

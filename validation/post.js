@@ -13,7 +13,7 @@ module.exports = function validatePostInput(data) {
     errors.title = "Title field is required"
   }
 
-  if(Validator.isLength(data.title, { min: 6, max: 50})){
+  if(!Validator.isLength(data.title, { min: 6, max: 50})){
     errors.title = "Title must be between 6 and 50 characters"
   }
 
@@ -21,7 +21,7 @@ module.exports = function validatePostInput(data) {
     errors.text = "Text field is required"
   }
 
-  if(Validator.isLength(data.text, { min: 6, max: undefined})){
+  if(!Validator.isLength(data.text, { min: 6, max: undefined})){
     errors.text = "Title must be at least 6 characters"
   }
 
@@ -29,11 +29,11 @@ module.exports = function validatePostInput(data) {
     errors.author = "Author field is required"
   }
 
-  if(Validator.isLength(data.author, { min: 6, max: 50})){
-    errors.title = "Author name must be between 6 and 50 characters"
+  if(!Validator.isLength(data.author, { min: 6, max: 50})){
+    errors.author = "Author name must be between 6 and 50 characters"
   }
 
-  if(Validator.isEmpty(data.category)){
+  if(data.category === 'none'){
     errors.category = "Category selection is required"
   }
 
