@@ -74,7 +74,13 @@ class EditPostDisplay extends Component {
   }
 }
 
-export default connect({ editPost })(withRouter(EditPostDisplay))
+const mapStateToProps = ({ errors }) => {
+  return {
+    errors
+  }
+}
+
+export default connect(mapStateToProps, { editPost })(withRouter(EditPostDisplay))
 
 
 // import React, { Component } from 'react'
