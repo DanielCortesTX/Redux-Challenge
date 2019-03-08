@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
 
 import { changeVoteScore } from '../../actions/posts'
@@ -30,6 +31,7 @@ class PostDisplay extends Component {
           <div className="d-flex flex-row align-items-center">
             <button className="btn btn-light bg-success" onClick={() => this.upVote(post._id)}><i className="fas fa-angle-up text-white"/></button>
             <button className="btn btn-light mr-2 bg-danger" onClick={() => this.downVote(post._id)}><i className="fas fa-angle-down text-white"/></button>
+            <Link to={`/post-edit/${post._id}`} className='btn btn-warning mr-2'>Edit</Link>
             <span className="lead">This post has a net score of: {post.voteScore}</span>
           </div>
           </div>
