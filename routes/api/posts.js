@@ -7,6 +7,7 @@ const Post = require('../../models/Post')
 
 // Validation
 const validatePostInput = require('../../validation/post')
+const validateEditInput = require('../../validation/edit')
 
 // @route  GET api/posts
 // @desc   Gets all posts
@@ -78,6 +79,13 @@ router.post('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   Post.findById(req.params.id)
     .then(post => {
+      const { errors, isValid } = validateEditInput(req.body)
+
+      // Validate
+      if(!isValid){
+        return res.status(400).json(errors)
+      }
+
       post.title = req.body.title
       post.text = req.body.text
 

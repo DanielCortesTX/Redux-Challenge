@@ -10,9 +10,6 @@ class EditPost extends Component {
     this.props.setActivePost(this.props.match.params.id)
     this.props.getActivePostComments(this.props.match.params.id)
   }
-  upVoteScore = (id, vote) => {
-    // this.props.changeVoteScore(id, vote)
-  }
   render() {
     const { post, loadingPost } = this.props
     let postDisplay
@@ -27,7 +24,6 @@ class EditPost extends Component {
 
     return (
       <div className="container">
-        <h2>Edit page</h2>
         {postDisplay}
       </div>
     )

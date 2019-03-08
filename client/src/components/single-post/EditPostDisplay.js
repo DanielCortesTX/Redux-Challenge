@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import classnames from 'classnames'
 
 import { editPost } from '../../actions/posts'
 
@@ -38,30 +39,38 @@ class EditPostDisplay extends Component {
     })
   }
   render() {
-    const { post } = this.props
+    const { post, errors } = this.props
     
     return (
-      <div className="center-item">
-        <div className="">
-          <h1 className="display-4">{post.title}</h1>
+      <div>
+        <div>
+          <h1 className="display-4 center-item">{post.title}</h1>
           <hr className="focus-post mb-4"/>
           <form action="submit" onSubmit={this.modifyPost}>
-            <div>
+          <div className="form-group">
+          <input 
+            value={this.state.title}
+            type="text"
+            name="title"
+            className={classnames('form-control form-control-lg', {
+              'is-invalid': errors.title
+            })}
+            onChange={this.changeInput}/>
+            {errors.title && (<div className="invalid-feedback">{errors.title}</div>)}  
+        </div>
+            <div className="form-group">
               <textarea
                 value={this.state.text}
                 type="text"
                 name="text"
+                className={classnames('form-control form-control-lg', {
+                  'is-invalid': errors.text
+                })}
                 onChange={this.changeInput}
                 />
+                {errors.text && (<div className="invalid-feedback">{errors.text}</div>)}
             </div>
-            <div>
-              <input 
-                value={this.state.title}
-                type="text"
-                name="title"
-                onChange={this.changeInput}/>
-            </div>
-            <div>
+            <div className="form-group">
               <input 
                 type="submit"
                 className="btn btn-large btn-primary"
