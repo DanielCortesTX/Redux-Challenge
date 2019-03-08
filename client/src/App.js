@@ -9,6 +9,7 @@ import Home from './components/Home'
 import Create from './components/Create'
 import Category from './components/Category'
 import Post from './components/single-post/Post'
+import EditPost from './components/single-post/EditPost'
 import PageNotFound from './components/frequents/PageNotFound'
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
             <Route path="/create" component={Create}/>
             <Route path="/category/:category" component={Category}/>
             <Route path="/post/:id" component={Post}/>
+            <Route path="/post-edit/:id" component={EditPost}/>
             <Route component={PageNotFound}/>
             </Switch>
           </div>

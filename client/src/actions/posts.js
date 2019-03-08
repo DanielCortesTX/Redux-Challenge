@@ -79,6 +79,17 @@ export const createPost = (newPost, history) => (dispatch) => {
       }))  
 }
 
+export const editPost = (newPost, id, history) => (dispatch) => {
+  dispatch(clearErrors())
+  axios.put(`/api/posts/${id}`, newPost)
+    .then(res => history.push(`/post/${id}`))
+    .catch(err => 
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      }))  
+}
+
 export const clearErrors = () => {
   return {
     type: CLEAR_ERRORS
