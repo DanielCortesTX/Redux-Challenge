@@ -20,6 +20,7 @@ class CommentDisplay extends Component {
         <div className="d-flex flex-row align-items-center">
           <button className="btn btn-light bg-success" onClick={() => this.upVote(comment._id)}><i className="fas fa-angle-up text-white"/></button>
           <button className="btn btn-light mr-2 bg-danger" onClick={() => this.downVote(comment._id)}><i className="fas fa-angle-down text-white"/></button>
+          <button className="btn bt-light bg-warning mr-2">Delete</button>
           <span className="lead">Comment score: {comment.voteScore}</span>
         </div>
       </div>

@@ -90,6 +90,20 @@ export const editPost = (newPost, id, history) => (dispatch) => {
       }))  
 }
 
+export const deletePost = (id) => (dispatch) => {
+  axios.delete(`/api/posts/${id}`)
+    .then(res => 
+      dispatch({
+        type: SET_ACTIVE_POST,
+        payload: res.data
+      }))
+    .catch(err => 
+      dispatch({
+        type: SET_ACTIVE_POST,
+        payload: null
+      }))  
+}
+
 export const clearErrors = () => {
   return {
     type: CLEAR_ERRORS

@@ -5,7 +5,13 @@ import classnames from 'classnames'
 class PostLink extends Component {
   render() {
     const { post } = this.props
-    let upper = post.category.toUpperCase()
+    let postDisplay
+
+    if(post.deleted){
+      postDisplay = "Post Deleted"
+    } else {
+      postDisplay = post.title
+    }
     return (
       <div className="card card-body mx-3 my-3 link-width">
         <Link to={`/post/${post._id}`} className={classnames('btn btn-lg', {
@@ -14,7 +20,7 @@ class PostLink extends Component {
           'btn-danger': post.category === 'books'
         }, {
           'btn-primary': post.category === 'games'
-        })}>{post.title}</Link>
+        })}>{postDisplay}</Link>
       </div>
     )
   }
