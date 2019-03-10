@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CommentDisplay from './CommentDisplay'
-import { changeCommentVote } from '../../actions/comments'
+import { changeCommentVote, deleteComment } from '../../actions/comments'
 import { connect } from 'react-redux'
 
 class CommentsFeed extends Component {
@@ -15,7 +15,7 @@ class CommentsFeed extends Component {
     if(comments === null || loading){
       commentFeed = <h1 className="display-4 center-item">Loading</h1>
     } else {
-      commentFeed = comments.map((comment) => <CommentDisplay key={comment._id} comment={comment} changeCommentVote={this.props.changeCommentVote}/>)
+      commentFeed = comments.map((comment) => <CommentDisplay key={comment._id} comment={comment} deleteComment={this.props.deleteComment} changeCommentVote={this.props.changeCommentVote}/>)
     }
 
     return (
@@ -35,4 +35,4 @@ const mapStateToProps = ({ comment }) => {
   }
 }
 
-export default connect(mapStateToProps, { changeCommentVote })(CommentsFeed)
+export default connect(mapStateToProps, { changeCommentVote, deleteComment })(CommentsFeed)

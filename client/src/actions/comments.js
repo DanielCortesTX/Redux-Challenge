@@ -37,6 +37,20 @@ export const changeCommentVote = (id, vote, parentId) => (dispatch) => {
     }))    
 }
 
+export const deleteComment = (id) => (dispatch) => {
+  axios.delete(`/api/comments/${id}`)
+  .then(res =>
+    dispatch({
+      type: GET_ACTIVE_POST_COMMENTS,
+      payload: res.data
+    }))
+  .catch(err =>
+    dispatch({
+      type: GET_ACTIVE_POST_COMMENTS,
+      payload: null
+    }))
+}
+
 export const setCommentsLoading = () => () => {
   return {
     type: LOADING_COMMENTS,
