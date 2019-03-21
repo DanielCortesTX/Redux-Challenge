@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { setActivePost, changeVoteScore } from '../../actions/posts'
-import { getActivePostComments } from '../../actions/comments'
+import { getActivePostComments, addComment } from '../../actions/comments'
 import CommentsFeed from './CommentsFeed'
 import PostDisplay from './PostDisplay'
+
+import NewCommentForm from './NewCommentForm'
 
 class Post extends Component {
   componentDidMount(){
@@ -25,10 +27,10 @@ class Post extends Component {
       postDisplay = <PostDisplay post={post}/>
     }
 
-
     return (
       <div className="container">
         {postDisplay}
+        <NewCommentForm parentId={parentId} addComment={this.props.addComment}/>
         <CommentsFeed parentId={parentId}/>
       </div>
     )
@@ -42,4 +44,4 @@ const mapStateToProps = ({ post }) => {
   }
 }
 
-export default connect(mapStateToProps, { setActivePost, changeVoteScore, getActivePostComments })(Post)
+export default connect(mapStateToProps, { setActivePost, changeVoteScore, getActivePostComments, addComment })(Post)

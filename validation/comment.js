@@ -11,16 +11,16 @@ module.exports = function validateCommentInput(data) {
     errors.text = "Text field is required"
   }
 
-  if(Validator.isLength(data.text, { min: 6, max: undefined})){
-    errors.text = "Title must be at least 6 characters"
+  if(!Validator.isLength(data.text, { min: 6, max: 300})){
+    errors.text = "Title must between 6 and 300 characters."
   }
 
   if(Validator.isEmpty(data.author)){
     errors.author = "Author field is required"
   }
 
-  if(Validator.isLength(data.author, { min: 6, max: 50})){
-    errors.title = "Author name must be between 6 and 50 characters"
+  if(!Validator.isLength(data.author, { min: 3, max: 50})){
+    errors.title = "Author name must be between 3 and 50 characters"
   }
 
   return {

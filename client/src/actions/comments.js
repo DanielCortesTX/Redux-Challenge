@@ -17,6 +17,21 @@ export const getActivePostComments = (id) => (dispatch) => {
       }))
 }
 
+export const addComment = (newComment) => (dispatch) => {
+  dispatch(setCommentsLoading)
+  axios.post('/api/comments', newComment)
+    .then(res =>
+      dispatch({
+        type: GET_ACTIVE_POST_COMMENTS,
+        payload: res.data
+      }))
+    .catch(err =>
+      dispatch({
+        type: GET_ACTIVE_POST_COMMENTS,
+        payload: null
+      }))  
+}
+
 export const clearActivePostComments = () => {
   return {
     type: CLEAR_ACTIVE_POST_COMMENTS

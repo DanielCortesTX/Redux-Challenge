@@ -29,7 +29,10 @@ router.post('/', (req, res) => {
     parentDeleted: false
   })
 
-  newComment.save().then(comment => res.json(comment))
+  newComment.save().then(comment => 
+    Comment.find({ parentId: comment.parentId})
+      .then(posts => res.json(posts))
+      .catch(err => res.status(404).json({ categories: 'No post found'})))
 })
 
 // @route  GET api/comments
