@@ -11,6 +11,7 @@ import Category from './components/Category'
 import Post from './components/single-post/Post'
 import EditPost from './components/single-post/EditPost'
 import PageNotFound from './components/frequents/PageNotFound'
+import EditComment from './components/single-post/EditComment'
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
             <Route path="/category/:category" component={Category}/>
             <Route path="/post/:id" component={Post}/>
             <Route path="/post-edit/:id" component={EditPost}/>
+            <Route path="/edit-comment/:id" component={EditComment}/>
             <Route component={PageNotFound}/>
             </Switch>
           </div>

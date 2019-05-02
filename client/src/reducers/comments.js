@@ -1,7 +1,8 @@
-import { GET_ACTIVE_POST_COMMENTS, CLEAR_ACTIVE_POST_COMMENTS, LOADING_COMMENTS } from '../actions/types'
+import { GET_ACTIVE_POST_COMMENTS, CLEAR_ACTIVE_POST_COMMENTS, LOADING_COMMENTS, SET_EDIT_COMMENT } from '../actions/types'
 
 const initialState = {
   activePostComments: [],
+  editComment: {},
   loading: false
 }
 
@@ -16,6 +17,11 @@ export default function commentsReducer (state = initialState, action) {
       return {
         ...state,
         activePostComments: []
+      }
+    case SET_EDIT_COMMENT:
+      return {
+        ...state,
+        editComment: action.payload
       }  
     case LOADING_COMMENTS:
       return {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class CommentDisplay extends Component {
   upVote(id){
@@ -26,6 +27,7 @@ class CommentDisplay extends Component {
         <button className="btn btn-light bg-success" onClick={() => this.upVote(comment._id)}><i className="fas fa-angle-up text-white"/></button>
         <button className="btn btn-light mr-2 bg-danger" onClick={() => this.downVote(comment._id)}><i className="fas fa-angle-down text-white"/></button>
         <button className="btn bt-light bg-warning mr-2" onClick={() => this.deleteComment(comment._id)}>Delete</button>
+        <Link className="btn btn-light mr-2 bg-info" to={`/edit-comment/${comment._id}`}>Edit</Link>
         <span className="lead">Comment score: {comment.voteScore}</span>
       </div>
       </div>
