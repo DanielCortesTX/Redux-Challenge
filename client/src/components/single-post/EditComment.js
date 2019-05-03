@@ -1,40 +1,41 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { setActivePost } from '../../actions/posts'
-import { getActivePostComments } from '../../actions/comments'
-import EditPostDisplay from './EditPostDisplay'
+import { setEditComment } from '../../actions/comments'
+// import EditPostDisplay from './EditPostDisplay'
 
 class EditPost extends Component {
   componentDidMount(){
-    this.props.setActivePost(this.props.match.params.id)
-    this.props.getActivePostComments(this.props.match.params.id)
+    this.props.setEditComment(this.props.match.params.id)
   }
   render() {
-    const { post, loadingPost } = this.props
-    let postDisplay
-    const parentId = this.props.match.params.id
+    const { comment, loading } = this.props
+    let commentDisplay
+    // const parentId = this.props.match.params.id
     
-    if(post === null || loadingPost){
-      postDisplay = <h1 className="display-4 center-item">Loading Post</h1>
+    if(comment === null || loading){
+      commentDisplay = <h1 className="display-4 center-item">Loading Comment</h1>
     } else {
-      postDisplay = <EditPostDisplay post={post} id={parentId} title={post.title} text={post.text}/>
+      commentDisplay = <h1 className="display-4 center-item">{comment.text}</h1>
     }
 
 
     return (
       <div className="container">
-        {postDisplay}
+        {commentDisplay}
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ post }) => {
+const mapStateToProps = ({ comment }) => {
   return {
-    post: post.activePost,
-    loadingPost: post.loading,
+    comment: comment.editComment,
+    loading: comment.loading,
   }
 }
 
-export default connect(mapStateToProps, { setActivePost, getActivePostComments })(EditPost)
+export default connect(mapStateToProps, { setEditComment })(EditPost)
+
+
+// <EditPostDisplay post={post} id={parentId} title={post.title} text={post.text}/>

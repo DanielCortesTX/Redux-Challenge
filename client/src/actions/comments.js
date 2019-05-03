@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { GET_ACTIVE_POST_COMMENTS, CLEAR_ACTIVE_POST_COMMENTS, LOADING_COMMENTS } from '../actions/types'
+import { GET_ACTIVE_POST_COMMENTS, CLEAR_ACTIVE_POST_COMMENTS, LOADING_COMMENTS, SET_EDIT_COMMENT } from '../actions/types'
 
 export const getActivePostComments = (id) => (dispatch) => {
   dispatch(setCommentsLoading())
@@ -64,6 +64,20 @@ export const deleteComment = (id) => (dispatch) => {
       type: GET_ACTIVE_POST_COMMENTS,
       payload: null
     }))
+}
+
+export const setEditComment = (id) => (dispatch) => {
+  axios.get(`/api/comments/${id}`)
+    .then(res =>
+    dispatch({
+      type: SET_EDIT_COMMENT,
+      payload: res.data
+    }))
+  .catch(err => 
+    dispatch({
+      type: SET_EDIT_COMMENT,
+      payload: null
+    })) 
 }
 
 export const setCommentsLoading = () => () => {
