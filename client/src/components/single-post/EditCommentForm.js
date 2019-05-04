@@ -3,33 +3,30 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import classnames from 'classnames'
 
-import { editPost } from '../../actions/posts'
+import { editComment } from '../../actions/comments'
 
 class EditPostDisplay extends Component {
   constructor(props){
     super(props)
     this.state = {
-      title: '',
       text: ''
     }
 
     this.changeInput = this.changeInput.bind(this)
-    this.modifyPost = this.modifyPost.bind(this)
+    this.modifyComment = this.modifyComment.bind(this)
   }
-  componentWillReceiveProps(post){
+  componentWillReceiveProps(comment){
     this.setState(() => ({
-      text: post.text,
-      title: post.title
+      text: comment.text
     }))
   }
-  modifyPost(e){
+  modifyComment(e){
     e.preventDefault()
     console.log(this.state)
-    const newPost = {
-      title: this.state.title,
+    const newComment = {
       text: this.state.text
     }
-    this.props.editPost(newPost ,this.props.id, this.props.history)
+    this.props.editComment(newComment ,this.props.id, this.props.parentId, this.props.history)
     // this.props.createPost(newPost, this.props.history)
   }
 
@@ -39,25 +36,14 @@ class EditPostDisplay extends Component {
     })
   }
   render() {
-    const { post, errors } = this.props
+    const { comment, errors } = this.props
     
     return (
       <div>
         <div>
-          <h1 className="display-4 center-item">{post.title}</h1>
+        <h1 className="display-4 center-item">Edit your post and delete.</h1>
           <hr className="focus-post mb-4"/>
-          <form action="submit" onSubmit={this.modifyPost}>
-          <div className="form-group">
-          <input 
-            value={this.state.title}
-            type="text"
-            name="title"
-            className={classnames('form-control form-control-lg', {
-              'is-invalid': errors.title
-            })}
-            onChange={this.changeInput}/>
-            {errors.title && (<div className="invalid-feedback">{errors.title}</div>)}  
-        </div>
+          <form action="submit" onSubmit={this.modifyComment}>
             <div className="form-group">
               <textarea
                 value={this.state.text}
@@ -89,4 +75,4 @@ const mapStateToProps = ({ errors }) => {
   }
 }
 
-export default connect(mapStateToProps, { editPost })(withRouter(EditPostDisplay))
+export default connect(mapStateToProps, { editComment })(withRouter(EditPostDisplay))

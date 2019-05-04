@@ -66,6 +66,21 @@ export const deleteComment = (id) => (dispatch) => {
     }))
 }
 
+export const editComment = (newComment, id, parentId, history) => (dispatch) => {
+  axios.put(`/api/comments/${id}`, newComment)
+    .then(res => 
+      dispatch({
+        type: SET_EDIT_COMMENT,
+        payload: null
+      }))
+      .then(res => history.push(`/post/${parentId}`))  
+    .catch(err => 
+      dispatch({
+        type: SET_EDIT_COMMENT,
+        payload: null
+      }))  
+}
+
 export const setEditComment = (id) => (dispatch) => {
   axios.get(`/api/comments/${id}`)
     .then(res =>

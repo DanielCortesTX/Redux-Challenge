@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { setEditComment } from '../../actions/comments'
-// import EditPostDisplay from './EditPostDisplay'
+import EditCommentForm from './EditCommentForm'
 
-class EditPost extends Component {
+class EditComment extends Component {
   componentDidMount(){
     this.props.setEditComment(this.props.match.params.id)
   }
@@ -16,7 +16,7 @@ class EditPost extends Component {
     if(comment === null || loading){
       commentDisplay = <h1 className="display-4 center-item">Loading Comment</h1>
     } else {
-      commentDisplay = <h1 className="display-4 center-item">{comment.text}</h1>
+      commentDisplay = <EditCommentForm comment={comment} id={comment._id} parentId={comment.parentId} text={comment.text}/>
     }
 
 
@@ -35,7 +35,10 @@ const mapStateToProps = ({ comment }) => {
   }
 }
 
-export default connect(mapStateToProps, { setEditComment })(EditPost)
+export default connect(mapStateToProps, { setEditComment })(EditComment)
 
 
 // <EditPostDisplay post={post} id={parentId} title={post.title} text={post.text}/>
+
+
+// <EditCommentForm comment={comment} id={comment.id} text={comment.text}/>
