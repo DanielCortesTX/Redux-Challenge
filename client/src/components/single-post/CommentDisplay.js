@@ -18,7 +18,7 @@ class CommentDisplay extends Component {
     let commentDisplay
 
     if(comment.deleted){
-      commentDisplay = <h1 className="display-4 mb-3">This comment has been deleted</h1>
+      commentDisplay = <h1 className="lead mb-3">This comment has been deleted</h1>
     } else {
       commentDisplay = <div>
       <div className=" d-flex flex-column align-items-start mb-3">

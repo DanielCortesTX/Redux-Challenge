@@ -23,7 +23,7 @@ class PostDisplay extends Component {
     let display
 
     if(post.deleted){
-      display = <h2 className="display-4">This post no longer exists</h2>
+      display = <h2 className="display-4 my-4">This post has been deleted.</h2>
     } else {
       display = <div>
         <h1 className="display-4">{post.title}</h1>

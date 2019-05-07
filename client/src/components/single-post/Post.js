@@ -30,7 +30,7 @@ class Post extends Component {
     return (
       <div className="container">
         {postDisplay}
-        <NewCommentForm parentId={parentId} addComment={this.props.addComment}/>
+        <NewCommentForm parentId={parentId} post={post} addComment={this.props.addComment}/>
         <CommentsFeed parentId={parentId}/>
       </div>
     )

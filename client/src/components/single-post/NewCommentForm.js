@@ -33,8 +33,11 @@ class NewCommentForm extends Component {
       author: '' })
   }
   render() {
+    const { post } = this.props
     return (
-      <div className="card card-body">
+      <div>
+        {!post.deleted && 
+          <div className="card card-body comment-frame">
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <textarea 
@@ -61,6 +64,8 @@ class NewCommentForm extends Component {
               className="btn btn-large btn-primary"/>
           </div>
         </form>
+      </div>
+        }
       </div>
     )
   }
