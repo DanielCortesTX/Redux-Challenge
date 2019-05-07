@@ -36,7 +36,7 @@ class EditPostDisplay extends Component {
     })
   }
   render() {
-    const { comment, errors } = this.props
+    const { errors } = this.props
     
     return (
       <div>

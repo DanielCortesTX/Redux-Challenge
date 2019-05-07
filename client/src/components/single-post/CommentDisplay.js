@@ -21,8 +21,10 @@ class CommentDisplay extends Component {
       commentDisplay = <h1 className="display-4 mb-3">This comment has been deleted</h1>
     } else {
       commentDisplay = <div>
-        <h3>{comment.author}:</h3>
-      <h2>{comment.text}</h2>
+      <div className=" d-flex flex-column align-items-start mb-3">
+        <h2 className="lead">{comment.text}</h2>
+        <em>By {comment.author}</em>
+      </div>
       <div className="d-flex flex-row align-items-center">
         <button className="btn btn-light bg-success" onClick={() => this.upVote(comment._id)}><i className="fas fa-angle-up text-white"/></button>
         <button className="btn btn-light mr-2 bg-danger" onClick={() => this.downVote(comment._id)}><i className="fas fa-angle-down text-white"/></button>
@@ -34,7 +36,7 @@ class CommentDisplay extends Component {
     }
 
     return (
-      <div className="card card-body">
+      <div className="card card-body comment-frame my-2">
         {commentDisplay}
       </div>
       

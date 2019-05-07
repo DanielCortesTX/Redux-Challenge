@@ -1,6 +1,11 @@
 /* .App {
   text-align: center;
 } */
+
+.comment-frame {
+  width: 50%;
+}
+
 .center-item {
   text-align: center;
 }
