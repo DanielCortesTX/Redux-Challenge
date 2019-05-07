@@ -43,26 +43,28 @@ class EditPostDisplay extends Component {
         <div>
         <h1 className="display-4 center-item">Edit your post and delete.</h1>
           <hr className="focus-post mb-4"/>
+          <div className="comment-frame">
           <form action="submit" onSubmit={this.modifyComment}>
-            <div className="form-group">
-              <textarea
-                value={this.state.text}
-                type="text"
-                name="text"
-                className={classnames('form-control form-control-lg', {
-                  'is-invalid': errors.text
-                })}
-                onChange={this.changeInput}
-                />
-                {errors.text && (<div className="invalid-feedback">{errors.text}</div>)}
-            </div>
-            <div className="form-group">
-              <input 
-                type="submit"
-                className="btn btn-large btn-primary"
+          <div className="form-group">
+            <textarea
+              value={this.state.text}
+              type="text"
+              name="text"
+              className={classnames('form-control form-control-lg', {
+                'is-invalid': errors.text
+              })}
+              onChange={this.changeInput}
               />
-            </div>
-          </form>
+              {errors.text && (<div className="invalid-feedback">{errors.text}</div>)}
+          </div>
+          <div className="form-group">
+            <input 
+              type="submit"
+              className="btn btn-large btn-primary"
+            />
+          </div>
+        </form>
+          </div>
         </div>
       </div>  
     )
