@@ -49,7 +49,7 @@ class Home extends Component {
 
         <hr/>
 
-        <div className="d-flex">
+        <div className="d-flex flex-wrap justify-content-around">
           {categoryFeed}
         </div>
 

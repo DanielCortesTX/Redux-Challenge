@@ -8,7 +8,7 @@ class CategoryLink extends Component {
     let name = category.name
     const upper = name.toUpperCase()
     return (
-      <div className="card card-body mx-3">
+      <div className="card card-body mx-3 my-3 link-width">
         
         <Link to={`/category/${category.name}`} className={classnames('btn btn-lg', {
           'btn-warning': category.name === 'movies'
