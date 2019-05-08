@@ -19,7 +19,7 @@ class CommentsFeed extends Component {
     }
 
     return (
-      <div className="center-item">
+      <div className="center-item mb-4">
         <div className="d-flex align-items-center flex-column m-1">
           {commentFeed}
         </div>
