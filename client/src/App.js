@@ -11,7 +11,7 @@ import Category from './components/Category'
 import Post from './components/single-post/Post'
 import EditPost from './components/single-post/EditPost'
 import PageNotFound from './components/frequents/PageNotFound'
-import EditComment from './components/single-post/EditComment'
+import EditComment from './components/comment/EditComment'
 
 class App extends Component {
   render() {

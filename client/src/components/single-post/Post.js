@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 
 import { setActivePost, changeVoteScore } from '../../actions/posts'
 import { getActivePostComments, addComment } from '../../actions/comments'
-import CommentsFeed from './CommentsFeed'
+import CommentsFeed from '../comment/CommentsFeed'
 import PostDisplay from './PostDisplay'
 
-import NewCommentForm from './NewCommentForm'
+import NewCommentForm from '../comment/NewCommentForm'
 
 class Post extends Component {
   componentDidMount(){
