@@ -59,7 +59,7 @@ class Home extends Component {
 
         <hr/>
 
-        <div className="d-flex flex-wrap">
+        <div className="d-flex flex-wrap justify-content-around">
           {postFeed}
         </div>
 
