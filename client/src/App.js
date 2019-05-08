@@ -12,7 +12,6 @@ import Post from './components/single-post/Post'
 import EditPost from './components/single-post/EditPost'
 import PageNotFound from './components/frequents/PageNotFound'
 import EditComment from './components/single-post/EditComment'
-import Footer from './components/frequents/Footer'
 
 class App extends Component {
   render() {
@@ -30,7 +29,6 @@ class App extends Component {
             <Route path="/edit-comment/:id" component={EditComment}/>
             <Route component={PageNotFound}/>
             </Switch>
-            <Footer />
           </div>
         </Router>
       </Provider>
