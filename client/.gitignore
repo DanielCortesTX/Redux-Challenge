@@ -2,10 +2,10 @@
 
 yarn.lock
 
-src/*
-public/*
-build/static/css/*.map
-build/static/js/*.map
+# src/*
+# public/*
+# build/static/css/*.map
+# build/static/js/*.map
 
 # dependencies
 /node_modules
@@ -16,7 +16,7 @@ build/static/js/*.map
 /coverage
 
 # production
-# /build
+/build
 
 # misc
 .DS_Store
