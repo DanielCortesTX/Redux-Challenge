@@ -2,11 +2,6 @@
 
 yarn.lock
 
-# src/*
-# public/*
-# build/static/css/*.map
-# build/static/js/*.map
-
 # dependencies
 /node_modules
 /.pnp

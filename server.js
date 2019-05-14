@@ -10,7 +10,7 @@ const comments = require('./routes/api/comments')
 const app = express()
 
 // Body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 // DB Config
