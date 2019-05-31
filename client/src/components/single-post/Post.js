@@ -7,6 +7,7 @@ import CommentsFeed from '../comment/CommentsFeed'
 import PostDisplay from './PostDisplay'
 
 import NewCommentForm from '../comment/NewCommentForm'
+import Loading from '../frequents/Loading'
 
 class Post extends Component {
   componentDidMount(){
@@ -22,7 +23,7 @@ class Post extends Component {
     const parentId = this.props.match.params.id
     
     if(post === null || loadingPost){
-      postDisplay = <h1 className="display-4 center-item">Loading Post</h1>
+      postDisplay = <Loading specific="Post"/>
     } else {
       postDisplay = <PostDisplay post={post}/>
     }

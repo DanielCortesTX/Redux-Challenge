@@ -3,6 +3,8 @@ import CommentDisplay from './CommentDisplay'
 import { changeCommentVote, deleteComment } from '../../actions/comments'
 import { connect } from 'react-redux'
 
+import Loading from '../frequents/Loading'
+
 class CommentsFeed extends Component {
   changeCommentVote = (id, vote) => {
     const { parentId } = this.props
@@ -13,7 +15,7 @@ class CommentsFeed extends Component {
     let commentFeed
 
     if(comments === null || loading){
-      commentFeed = <h1 className="display-4 center-item">Loading</h1>
+      commentFeed = <Loading specific="Comments"/>
     } else {
       commentFeed = comments.map((comment) => <CommentDisplay key={comment._id} comment={comment} deleteComment={this.props.deleteComment} changeCommentVote={this.props.changeCommentVote}/>)
     }
